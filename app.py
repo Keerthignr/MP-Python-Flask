@@ -3,8 +3,8 @@ from flask import Flask, render_template, request
 from twilio.rest import Client
 import requests
 
-account_sid = 'ACd8c8ebe796cc9e659f19493a83097abb'
-auth_token = '4405d070bfb95173b61a17761ae8fed1'
+account_sid = 'your twilio id'
+auth_token = 'your twilio token'
 client = Client(account_sid, auth_token)
 app = Flask(__name__, static_url_path='/static')
 
@@ -36,7 +36,7 @@ def user_registration():
     travel_pass = ((cnt / pop) * 100)
     if travel_pass < 30 and request.method == 'POST':
         status = 'CONFIRMED'
-        client.messages.create(to="whatsapp:+917995738336",
+        client.messages.create(to="whatsapp:+917095738336",
                                from_="whatsapp:+14155238886",
                                body="Hello " + " " + full_name + " " + "Your Travel From " + " " + source_dt + " " + " To " + " " + destination_dt + " " +
                                     "Has" + " " + status + " On " + " " + date + " ")
@@ -47,7 +47,7 @@ def user_registration():
 
     else:
         status = 'Not Confirmed'
-        client.messages.create(to="whatsapp:+917995738336",
+        client.messages.create(to="whatsapp:+917095738336",
                                from_="whatsapp:+14155238886",
                                body="Hello " + " " + full_name + " " + "Your Travel From " + " " + source_dt + " " + "To" + " " + destination_dt + " " +
                                     "Has" + " " + status + "On" + " " + date + " " + ", Apply later")
